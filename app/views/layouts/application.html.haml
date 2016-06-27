@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title MachinioSearchEngine
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = flash_messages
+    %nav.navbar.navbar-default.navbar-static-top
+      .container-fluid
+        .navbar-header
+          .navbar-brand Machinio Search Engine
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li= link_to 'Store', documents_path
+            %li= link_to 'Search', search_path
+
+    = yield

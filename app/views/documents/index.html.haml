@@ -1,0 +1,9 @@
+.container-fluid
+  .row
+    .col-md-2
+    .col-md-8
+      = simple_form_for(@document, html: { class: 'form-horizontal' }) do |f|
+        .form-group
+          = f.input :body, label: 'Enter text that you want to store in the database', input_html: { class: 'form-control' }
+        = f.submit 'Store', class: 'btn btn-default'
+    .col-md-2

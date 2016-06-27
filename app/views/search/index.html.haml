@@ -1,0 +1,21 @@
+.container-fluid
+  .row
+    .col-md-2
+    .col-md-8
+      = simple_form_for(:search, url: search_path, method: :get, html: { class: 'form-horizontal' }) do |f|
+        .form-group
+          = f.input :query_string, label: false, input_html: { class: 'form-control', value: @query_string }
+        = f.submit 'Search', class: 'btn btn-default'
+    .col-md-2
+  .row
+    - if @documents.present?
+      %table.table
+        %thead
+          %tr
+            %th Document ID
+            %th Document Body
+        %tbody
+          - @documents.each do |document|
+            %tr
+              %td= document.id
+              %td= document.body
