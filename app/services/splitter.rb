@@ -5,12 +5,7 @@ class Splitter
   end
 
   def call(env)
-    if env[:text].present?
-      parts = Set.new
-      parts.merge env[:text].split
-      env[:terms] = parts.to_a
-    end
-
+    env[:terms] = env[:text].split if env[:text].present?
     @app.call(env)
   end
 end

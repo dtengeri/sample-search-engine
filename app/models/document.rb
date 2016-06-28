@@ -31,7 +31,8 @@ class Document < ActiveRecord::Base
     indexer = Indexer.new
     result = indexer.index(body)
     if result[:terms].present?
-      result[:terms].each do |term|
+      # Prevent duplicates with set
+      Set.new.merge(result[:terms]).each do |term|
         terms << Term.find_or_create_by(term: term)
       end
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626085054) do
+ActiveRecord::Schema.define(version: 20160628072046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160626085054) do
     t.integer "term_id"
   end
 
+  add_index "documents_terms", ["document_id", "term_id"], name: "index_documents_terms_on_document_id_and_term_id", unique: true, using: :btree
   add_index "documents_terms", ["document_id"], name: "index_documents_terms_on_document_id", using: :btree
   add_index "documents_terms", ["term_id"], name: "index_documents_terms_on_term_id", using: :btree
 

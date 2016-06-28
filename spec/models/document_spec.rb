@@ -14,6 +14,12 @@ RSpec.describe Document, type: :model do
       document.update_attributes(body: 'running on a hill with the dog')
       expect(document.terms.map(&:term)).to eq(%w(run on hill with dog))
     end
+
+    it 'connects with a term only once' do
+      document.body = 'running on a hill with the children and with the dogs'
+      document.save
+      expect(document.terms.map(&:term)).to eq(%w(run on hill with children and dog))
+    end
   end
 
   describe '#search' do
